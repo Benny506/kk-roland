@@ -1,0 +1,37 @@
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'DmSans';
+  src: url('./assets/fonts/dmSans/DMSans.ttf');
+}
+
+input::placeholder{
+  color: #D9D9D9;
+  font-family: Poppins;
+  font-size: 13.5px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.clickable{
+  cursor: pointer;
+}
+
+.bg-img{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+button, input, textarea{
+  border: none;
+  outline: none;
+}
+
+input:focus, textarea:focus{
+  outline: none;
+}
