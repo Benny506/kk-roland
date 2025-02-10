@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { CircleSvg } from "../../svgs/CustomSvg";
 import visionImg from '../../../assets/images/visionImg.png'
 
@@ -38,8 +38,34 @@ const aboutOptions = [
     },
 ]
 
+const aboutStatements = [
+    {
+        title: 'Vision',
+        subTitle: 'Building Vision, Delivering Value',
+        text: 'Our vision is to be the leading firm in designing and delivering first-class, high-quality projects that balance innovation, superior craftsmanship, and cost-efficiency, ensuring exceptional value and sustainable solutions.'
+    },
+    {
+        title: 'Mission',
+        subTitle: 'Engineering Progress, Empowering Innovation.',
+        text: 'To deliver innovative and sustainable engineering solutions that drive progress and exceed client expectations.'
+    },
+    {
+        title: 'History',
+        subTitle: 'Built on Innovation, Driven by Excellence.',
+        text: 'Founded with a passion for innovation, our engineering company has grown from a small team of experts into a trusted leader, delivering cutting-edge solutions across diverse industries.'
+    },
+    {
+        title: 'Our Approach',
+        subTitle: 'Strategic Thinking, Practical Solutions.',
+        text: 'We combine technical expertise, collaborative problem-solving, and a client-focused mindset to deliver tailored engineering solutions that meet evolving industry needs.'
+    },
+]
+
 
 export default function AboutUs(){
+
+    const [activeAbtStatement, setActiveAbtStatement] = useState(aboutStatements[0])
+    const [statements, setStatements] = useState(aboutStatements)
 
     const displayAboutUsOptions = aboutOptions.map((aboutOpt, i) => {
         const { title, text } = aboutOpt
@@ -72,6 +98,47 @@ export default function AboutUs(){
                         { text }
                     </p>
                 </div>
+            </div>
+        )
+    })
+
+    const displayAboutStatements = statements.map((aboutStatement, i) => {
+        const { title } = aboutStatement
+
+        const isActive = activeAbtStatement.title == title
+
+        const handleStatementClick = () => {
+            const _statements = aboutStatements.filter(statement => statement.title != title)
+            _statements.unshift(aboutStatement)
+
+            setActiveAbtStatement(aboutStatement)
+            setStatements(_statements)
+
+            return;
+        }
+
+        return(
+            <div
+                key={i}
+                className="mb-4"
+            >
+                {
+                    isActive
+                    ?
+                        <h1
+                            onClick={handleStatementClick}
+                            style={{
+                                textDecorationLine: 'underline',
+                            }}
+                            className="clickable txt-E37A16 txt-43 fw-600 m-0 p-0 font-family-DmSans"
+                        >
+                            { title }
+                        </h1>       
+                    :
+                        <p onClick={handleStatementClick} className="clickable m-0 p-0 txt-737373 font-family-DmSans txt-20 fw-500">
+                            { title }
+                        </p>                                
+                }
             </div>
         )
     })
@@ -114,7 +181,7 @@ export default function AboutUs(){
                         className="d-flex clickable py-2 align-items-center justify-content-between px-2"
                     >  
                         <p className="m-0 p-0 txt-000 font-family-DmSans fw-500 txt-16">
-                            Why choose us
+                            Our Tenet
                         </p>
                         <p className="m-0 p-0 txt-000 font-family-DmSans fw-500 txt-16">
                             02
@@ -156,31 +223,15 @@ export default function AboutUs(){
                                 Our Tenets
                             </h1>
                         </div>
-                        <h1
-                            style={{
-                                textDecorationLine: 'underline',
-                            }}
-                            className="txt-E37A16 txt-43 fw-600 m-0 p-0 font-family-DmSans mb-3"
-                        >
-                            Vision
-                        </h1>
-                        <p className="m-0 p-0 txt-737373 font-family-DmSans txt-20 fw-500">
-                            Mission
-                        </p>
-                        <p className="m-0 p-0 txt-737373 font-family-DmSans txt-20 fw-500">
-                            History
-                        </p>
-                        <p className="m-0 p-0 txt-737373 font-family-DmSans txt-20 fw-500">
-                            Our Approach
-                        </p>                        
+                        { displayAboutStatements }
                     </div>
 
                     <div>
                         <h3 className="m-0 p-0 mb-4 txt-000 font-family-DmSans fw-500 txt-17">
-                            Building Vision, Delivering Value
+                            { activeAbtStatement.subTitle }
                         </h3>
                         <p className="m-0 p-0 font-family-DmSans txt-737373 txt-15 fw-500">
-                            Our vision is to be the leading firm in designing and delivering first-class, high-quality projects that balance innovation, superior craftsmanship, and cost-efficiency, ensuring exceptional value and sustainable solutions.
+                            { activeAbtStatement.text }
                         </p>
                     </div>
                 </div>

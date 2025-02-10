@@ -6,38 +6,60 @@ import { GiCancel } from "react-icons/gi";
 
 
 
-const navLinks = [
-    {
-        title: 'Home'
-    },
-    {
-        title: 'About us'
-    },
-    {
-        title: 'Portfolio'
-    },
-    {
-        title: 'Trainings'
-    },
-]
 
+export default function Navigation({ scrollToAboutUs, scrollToServices, scrollToFooter, scrollToOurWorks }){
 
-export default function Navigation(){
+    const navLinks = [
+        {
+            title: 'Home'
+        },
+        {
+            title: 'About us',
+            clickEvt: scrollToAboutUs
+        },
+        {
+            title: 'Portfolio',
+            clickEvt: scrollToOurWorks
+        },
+        {
+            title: 'Services',
+            clickEvt: scrollToServices
+        },
+    ]    
 
     const [showOffcanvasNav, setShowOffcanvasNav] = useState(false)
 
     const openOffCanvasNav = () => setShowOffcanvasNav(true)
     const hideOffCanvasNav = () => setShowOffcanvasNav(false)
 
+    const handleContactUsBtnClick = () => {
+        hideOffCanvasNav()
+        scrollToFooter()
+
+        return;
+    }
+
     const displayNavLinks = navLinks.map((navlink, i) => {
-        const { title } = navlink
+        const { title, clickEvt } = navlink
+
+        const handleNavClick = () => {
+            if(clickEvt){
+                clickEvt()
+            }
+
+            return hideOffCanvasNav()
+        }
 
         return (
             <div
                 key={i}
                 className=""
+                onClick={handleNavClick}
+                style={{
+                    color: i == 0 ? '#E37A16' : '#FFF'
+                }}
             >
-                <p className="m-0 p-0 font-family-DmSans txt-15 txt-FFF clickable">
+                <p className="m-0 p-0 font-family-DmSans txt-15 clickable">
                     { title }
                 </p>
             </div>
@@ -54,6 +76,7 @@ export default function Navigation(){
             </div>
             <div className="col-lg-2 d-lg-flex d-md-none d-none align-items-center justify-content-end">
                 <button
+                    onClick={handleContactUsBtnClick}
                     style={{
                         borderRadius: '40px'
                     }}
@@ -97,6 +120,7 @@ export default function Navigation(){
                         }
 
                         <button
+                            onClick={handleContactUsBtnClick}
                             style={{
                                 borderRadius: '40px'
                             }}

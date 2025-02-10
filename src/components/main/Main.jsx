@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import './css/main.css'
 import img1 from '../../assets/images/nav-bg-img-1.png'
 import { CraftSvg } from "../svgs/CustomSvg";
@@ -13,12 +13,58 @@ import Footer from "../footer/Footer";
 
 export default function Main(){
 
+    const aboutUsDiv = useRef(null)
+    const servicesDiv = useRef(null)
+    const ourWorksDiv = useRef(null)
+    const footerRef = useRef(null)
+
+    const scrollToAboutUs = () => {
+        aboutUsDiv.current?.scrollIntoView({
+            behavior: "smooth", 
+            block: "start",
+        })        
+
+        return;
+    }
+
+    const scrollToServices = () => {
+        servicesDiv.current?.scrollIntoView({
+            behavior: "smooth", 
+            block: "start",
+        })        
+
+        return;
+    }
+
+    const scrollToOurWorks = () => {
+        ourWorksDiv.current?.scrollIntoView({
+            behavior: "smooth", 
+            block: "start",
+        })        
+
+        return;
+    }
+
+    const scrollToFooter = () => {
+        footerRef.current?.scrollIntoView({
+            behavior: "smooth", 
+            block: "start",
+        })        
+
+        return;
+    }    
+
     return(
         <div>
             <div className="nav-container-bg bg-img p-lg-5 p-md-3 p-3 py-3">
 
                 <div className="mb-5">
-                    <Navigation />
+                    <Navigation 
+                        scrollToAboutUs={scrollToAboutUs}
+                        scrollToServices={scrollToServices}
+                        scrollToOurWorks={scrollToOurWorks}
+                        scrollToFooter={scrollToFooter}
+                    />
                 </div>
 
                 <div style={{ gap: '5px' }} className="d-flex flex-wrap align-items-start justify-content-between">
@@ -98,19 +144,21 @@ export default function Main(){
                 </div>
             </div>
 
-            <div className="p-lg-5 p-md-3 p-3">
+            <div ref={aboutUsDiv} className="p-lg-5 p-md-3 p-3">
                 <AboutUs />
             </div>
 
-            <div className="p-lg-5 p-md-3 p-3">
+            <div ref={servicesDiv} className="p-lg-5 p-md-3 p-3">
                 <Services />
             </div>       
 
-            <div className="p-lg-5 p-md-3 p-3">
+            <div ref={ourWorksDiv} className="p-lg-5 p-md-3 p-3">
                 <OurWorks />
             </div>  
 
-            <Footer />                      
+            <div ref={footerRef}>
+                <Footer />                      
+            </div>
         </div>
     )
 }
