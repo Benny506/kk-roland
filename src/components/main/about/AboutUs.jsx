@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { CircleSvg } from "../../svgs/CustomSvg";
 import visionImg from '../../../assets/images/visionImg.png'
+import missionImg from '../../../assets/images/missionImg.png'
+import historyImg from '../../../assets/images/historyImg.png'
+import ourApproachImg from '../../../assets/images/historyImg.png'
 
 
 const aboutOptions = [
@@ -40,21 +43,25 @@ const aboutOptions = [
 
 const aboutStatements = [
     {
+        img: visionImg,
         title: 'Vision',
         subTitle: 'Building Vision, Delivering Value',
         text: 'Our vision is to be the leading firm in designing and delivering first-class, high-quality projects that balance innovation, superior craftsmanship, and cost-efficiency, ensuring exceptional value and sustainable solutions.'
     },
     {
+        img: missionImg,
         title: 'Mission',
         subTitle: 'Engineering Progress, Empowering Innovation.',
         text: 'To deliver innovative and sustainable engineering solutions that drive progress and exceed client expectations.'
     },
     {
+        img: historyImg,
         title: 'History',
         subTitle: 'Built on Innovation, Driven by Excellence.',
         text: 'Founded with a passion for innovation, our engineering company has grown from a small team of experts into a trusted leader, delivering cutting-edge solutions across diverse industries.'
     },
     {
+        img: ourApproachImg,
         title: 'Our Approach',
         subTitle: 'Strategic Thinking, Practical Solutions.',
         text: 'We combine technical expertise, collaborative problem-solving, and a client-focused mindset to deliver tailored engineering solutions that meet evolving industry needs.'
@@ -207,7 +214,20 @@ export default function AboutUs(){
 
             <div className="d-flex flex-wrap align-items-stretch justify-content-between">
                 <div className="col-lg-6 col-md-12 col-12 mb-lg-0 mb-md-4 mb-4">
-                    <img className="col-lg-12 col-md-12 col-12" src={visionImg} />
+                    <img 
+                        className="col-lg-12 col-md-12 col-12" 
+                        src={
+                            activeAbtStatement.title.toLowerCase() == 'vision'
+                            ?
+                            visionImg
+                            :
+                            activeAbtStatement.title.toLowerCase() == 'mission'
+                            ?
+                            missionImg
+                            :
+                            historyImg
+                        } 
+                    />
                 </div>
 
                 <div className="col-lg-6 col-md-12 col-12 px-3">
