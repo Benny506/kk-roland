@@ -59,7 +59,7 @@ export default function Navigation({ scrollToAboutUs, scrollToServices, scrollTo
                     color: i == 0 ? '#E37A16' : '#FFF'
                 }}
             >
-                <p className="m-0 p-0 font-family-DmSans txt-15 clickable">
+                <p className="m-0 p-0 font-family-DmSans txt-15 clickable sinlge-nav-link">
                     { title }
                 </p>
             </div>
@@ -80,7 +80,7 @@ export default function Navigation({ scrollToAboutUs, scrollToServices, scrollTo
                     style={{
                         borderRadius: '40px'
                     }}
-                    className="bg-E37A16 px-3 py-2 font-family-DmSans txt-15 txt-FFF fw-600"
+                    className="bg-E37A16 nav-btn px-3 py-2 font-family-DmSans txt-15 txt-FFF fw-600"
                 >
                     Contact us
                 </button>
@@ -124,7 +124,7 @@ export default function Navigation({ scrollToAboutUs, scrollToServices, scrollTo
                             style={{
                                 borderRadius: '40px'
                             }}
-                            className="bg-E37A16 px-3 py-2 font-family-DmSans txt-15 txt-FFF fw-600"
+                            className="bg-E37A16 nav-btn px-3 py-2 font-family-DmSans txt-15 txt-FFF fw-600"
                         >
                             Contact us
                         </button>                        

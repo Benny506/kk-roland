@@ -58,7 +58,12 @@ export default function Main(){
         <div>
             <div className="nav-container-bg bg-img p-lg-5 p-md-3 p-3 py-3">
 
-                <div className="mb-5">
+                <div 
+                    style={{
+                        borderRadius: '40px'
+                    }}
+                    className="fixed-top mb-5 my-3 mx-3 bg-000"
+                >
                     <Navigation 
                         scrollToAboutUs={scrollToAboutUs}
                         scrollToServices={scrollToServices}
@@ -67,7 +72,7 @@ export default function Main(){
                     />
                 </div>
 
-                <div style={{ gap: '5px' }} className="d-flex flex-wrap align-items-start justify-content-between">
+                <div style={{ gap: '5px' }} className="d-flex my-5 py-5 flex-wrap align-items-start justify-content-between">
                     <div className="col-lg-6 col-md-12 col-12 mb-lg-0 mb-md-4 mb-4">
                         <h1 className="m-0 p-0 mb-1 font-family-DmSans fw-700 txt-FFF txt-50">
                             Building the future, One Beam at a Time.    

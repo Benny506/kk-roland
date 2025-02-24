@@ -38,11 +38,12 @@ export default function Footer(){
                             placeholder="Email address"
                         />                        
                     </div>
-                    <input 
+                    <textarea 
                         style={{
                             borderRadius: '30px',
                             border: '1px solid #737373',
-                            width: '100%'
+                            width: '100%',
+                            height: '15vh'
                         }}
                         className="px-3 py-2 bg-tranparent fw-500 txt-14 txt-FFF font-familyDmSans mb-4"
                         placeholder="Write message"

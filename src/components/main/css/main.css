@@ -7,3 +7,9 @@
     border-radius: 40px;
     background-color: rgba(255, 255, 255, 0.2);    
 }
+.sinlge-nav-link:hover{
+    color: #E37A16;
+}
+.nav-btn:hover{
+    opacity: 0.8;
+}
