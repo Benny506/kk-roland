@@ -1,101 +1,8 @@
-import React from "react";
-
-//work images
-import workImg1 from '../../../assets/images/works-img-1.png'
-import workImg2 from '../../../assets/images/works-img-2.png'
-import workImg3 from '../../../assets/images/works-img-3.png'
-import workImg4 from '../../../assets/images/works-img-4.png'
-import workImg5 from '../../../assets/images/works-img-5.png'
-import workImg6 from '../../../assets/images/works-img-6.png'
-import workImg7 from '../../../assets/images/works-img-7.png'
-import workImg8 from '../../../assets/images/works-img-8.png'
-import workImg9 from '../../../assets/images/works-img-9.png'
-import workImg10 from '../../../assets/images/works-img-10.png'
-import workImg11 from '../../../assets/images/works-img-11.png'
-import workImg12 from '../../../assets/images/works-img-12.png'
-
-//team images
-import teamImg1 from '../../../assets/images/team-img-1.png'
-import teamImg2 from '../../../assets/images/team-img-2.png'
-import teamImg3 from '../../../assets/images/team-img-3.png'
-
+import React, { useEffect, useState } from "react";
 import './css/ourWorks.css'
-
-
-const ourWorks = [
-    {
-        id: 1,
-        img: 'work-img-1-bg',
-        title: 'Site',
-        text: 'extentions'
-    },
-    {
-        id: 2,
-        img: 'work-img-2-bg',
-        title: 'FHC Site',
-        text: 'FHC site inspection'
-    },
-    {
-        id: 3,
-        img: 'work-img-3-bg',
-        title: 'FHC Site',
-        text: 'Issuing Site Instruction '
-    },
-    {
-        id: 4,
-        img: 'work-img-4-bg',
-        title: 'Site',
-        text: 'extentions '
-    },
-    {
-        id: 5,
-        img: 'work-img-5-bg',
-        title: 'Site',
-        text: 'extentions '
-    },
-    {
-        id: 6,
-        img: 'work-img-6-bg',
-        title: 'Site',
-        text: 'extentions '
-    },
-    {
-        id: 7,
-        img: 'work-img-7-bg',
-        title: 'Site',
-        text: 'extentions '
-    },
-    {
-        id: 8,
-        img: 'work-img-8-bg',
-        title: 'Site',
-        text: 'extentions '
-    },
-    {
-        id: 9,
-        img: 'work-img-9-bg',
-        title: 'Site',
-        text: 'extentions '
-    },
-    {
-        id: 10,
-        img: 'work-img-10-bg',
-        title: 'Site',
-        text: 'extentions '
-    },
-    {
-        id: 11,
-        img: 'work-img-11-bg',
-        title: 'Site',
-        text: 'extentions '
-    },             
-    {
-        id: 12,
-        img: 'work-img-12-bg',
-        title: 'Site',
-        text: 'extentions '
-    },
-]
+import ViewThreeWorksModal from "./auxiliary/ViewThreeWorksModal";
+import DisplaySingleWork from "./auxiliary/DisplaySingleWork";
+import { ourWorks } from "./auxiliary/ourWorksAux";
 
 const ourTeam = [
     {
@@ -133,42 +40,38 @@ const ourTeam = [
 
 export default function OurWorks(){
 
-    const displayOurWorks = ourWorks.map((workImg, i) => {
-        const { img, title, text } = workImg
+    const [viewThreeWorksModal, setViewThreeWorksModal] = useState({ visible: false, hide: null })
+    const [threeWorks, setThreeWorks] = useState()
+
+    const openViewThreeWorksModal = () => setViewThreeWorksModal({ visible: true, hide: hideViewThreeWorksModal })
+    const hideViewThreeWorksModal = () => setViewThreeWorksModal({ visible: false, hide: null })
+
+    const singleImgClick = ({ prev, current, next }) => {
+        if(!prev || !current || !next) return;
+
+        setThreeWorks([prev, current, next])
+        openViewThreeWorksModal()
+        return;
+    }
+
+    const displayOurWorks = ourWorks.map((singleWork, i) => {
+        // const { img, title, text } = singleWork
 
         return (
             <div    
                 key={i}
-                className={`col-lg-4 px-3 mb-4`}
+                className={`col-lg-4 col-12 col-md-12 px-3 mb-4`}
             >
-                <div 
-                    className={`${img} bg-img d-flex align-items-end justify-content-start`}
-                    style={{
-                        height: '414px'
-                    }}
-                >
-                    <div
-                        style={{
-                            backgroundColor: 'rgba(255, 255, 255, 0.45)',
-                            borderTopRightRadius: '8px',
-                            width: '95%'
-                        }}
-                        className="py-2 px-3"
-                    >
-                        <h1 className="m-0 p-0 txt-FFF font-family-DmSans fw-600 txt-17 mb-2">
-                            { title }
-                        </h1>
-                        <p className="m-0 p-0 txt-FFF font-familiy-DmSans txt-15">
-                            { text }
-                        </p>
-                    </div>
-                </div>
+                <DisplaySingleWork 
+                    singleWork={singleWork}
+                    singleImgClick={singleImgClick}
+                />
             </div>            
         )
     })
 
-    const displayOurTeam = ourTeam.map((workImg, i) => {
-        const { img, name, position } = workImg
+    const displayOurTeam = ourTeam.map((teamMember, i) => {
+        const { img, name, position } = teamMember
 
         return(
             <div    
@@ -280,6 +183,11 @@ export default function OurWorks(){
                     </button>
                 </div>
             </div>
+
+            <ViewThreeWorksModal 
+                modalProps={viewThreeWorksModal}
+                threeWorks={threeWorks}
+            />
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import './css/main.css'
 import img1 from '../../assets/images/nav-bg-img-1.png'
 import { CraftSvg } from "../svgs/CustomSvg";
@@ -7,9 +7,11 @@ import AboutUs from "./about/AboutUs";
 import Services from "./services/Services";
 import OurWorks from "./ourWorks/OurWorks";
 import Footer from "../footer/Footer";
+import CompanyClients from "./companyClients/CompanyClients";
 
 
 
+const backgroundClasses = ["nav-bg-img-1", "nav-bg-img-2", "nav-bg-img-3"];
 
 export default function Main(){
 
@@ -17,6 +19,16 @@ export default function Main(){
     const servicesDiv = useRef(null)
     const ourWorksDiv = useRef(null)
     const footerRef = useRef(null)
+
+    const [currentBgIndex, setCurrentBgIndex] = useState(0);
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrentBgIndex((prevIndex) => (prevIndex + 1) % backgroundClasses.length);
+      }, 4000);
+  
+      return () => clearInterval(interval);
+    }, []);    
 
     const scrollToAboutUs = () => {
         aboutUsDiv.current?.scrollIntoView({
@@ -56,7 +68,7 @@ export default function Main(){
 
     return(
         <div>
-            <div className="nav-container-bg bg-img p-lg-5 p-md-3 p-3 py-3">
+            <div className={`nav-container-bg bg-img background-container ${backgroundClasses[currentBgIndex]} p-lg-5 p-md-3 p-3 py-3`}>
 
                 <div 
                     style={{
@@ -147,6 +159,10 @@ export default function Main(){
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div className="p-lg-5 p-md-3 p-3 my-5">
+                <CompanyClients />
             </div>
 
             <div ref={aboutUsDiv} className="p-lg-5 p-md-3 p-3">

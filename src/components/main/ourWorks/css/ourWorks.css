@@ -51,3 +51,14 @@
 .team-img-5{
     background-image: url('../../../../assets/images/team-img-5.png');
 }
+
+
+
+
+
+/* view three works  */
+.view-three-works-modal-container{
+    background-color: #222222CC;
+    border-radius: 5px;
+    padding: 40px;
+}
