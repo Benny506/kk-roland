@@ -8,6 +8,37 @@ html, body{
   src: url('./assets/fonts/dmSans/DMSans.ttf');
 }
 
+.horizontal-scroll-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0;
+}
+
+.horizontal-scroll-content {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: max-content;
+}
+
+.horizontal-scroll-items {
+  display: flex;
+  gap: 20px;
+  animation: scroll 10s linear infinite;
+}
+
+/* Keyframe animation for scrolling */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
 input::placeholder{
   color: #D9D9D9;
   font-family: Poppins;

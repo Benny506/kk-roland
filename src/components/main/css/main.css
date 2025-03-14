@@ -20,7 +20,7 @@
     background-position: center;
 }
 .nav-bg-img-2{
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../assets/images/nav-bg.png');
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../assets/images/historyImg.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

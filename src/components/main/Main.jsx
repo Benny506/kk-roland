@@ -161,7 +161,7 @@ export default function Main(){
                 </div>
             </div>
 
-            <div className="p-lg-5 p-md-3 p-3 my-5">
+            <div className="py-lg-5 py-md-3 py-3 my-5">
                 <CompanyClients />
             </div>
 

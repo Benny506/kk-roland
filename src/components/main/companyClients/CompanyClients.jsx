@@ -19,9 +19,9 @@ export default function CompanyClients(){
     })
 
     return(
-        <div>
-            <div className="w-100 d-flex flex-column align-items-center justify-content-center">
-                <div className="d-flex align-items-center justify-content-start mb-4 pb-3">
+        <div className="">
+            <div className="w-100">
+                <div className="d-flex align-items-center justify-content-center mb-4 p-lg-5 p-md-3 p-3">
                     <h1 
                         style={{
                             borderLeft: '1px solid #E37A16',
@@ -33,11 +33,14 @@ export default function CompanyClients(){
                     </h1>
                 </div>   
 
-                <div className="d-flex align-items-center justify-content-center">
-                    <div style={{ gap: '60px' }} className="d-flex align-items-center w-100 justify-content-between flex-wrap">
-                        { displayCompanyClients }
-                    </div>
-                </div>             
+                <div className="horizontal-scroll-container">
+                    <div className="horizontal-scroll-content d-flex align-items-center justify-content-space-between">
+                        <div style={{ gap: '60px' }} className="horizontal-scroll-items d-flex align-items-center w-100 justify-content-between flex-wrap">
+                            { displayCompanyClients }
+                            { displayCompanyClients }
+                        </div>
+                    </div>             
+                </div>
             </div>
         </div>
     )
