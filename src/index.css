@@ -8,6 +8,10 @@ html, body{
   src: url('./assets/fonts/dmSans/DMSans.ttf');
 }
 
+select{
+  border: none;
+}
+
 .horizontal-scroll-container {
   width: 100%;
   overflow: hidden;

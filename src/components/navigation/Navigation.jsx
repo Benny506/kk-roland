@@ -3,11 +3,16 @@ import logo1 from '../../assets/images/logo_1.png'
 import { BsMenuButton } from "react-icons/bs";
 import { Offcanvas } from "react-bootstrap";
 import { GiCancel } from "react-icons/gi";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 export default function Navigation({ scrollToAboutUs, scrollToServices, scrollToFooter, scrollToOurWorks }){
+
+    const navigate = useNavigate()
+    const navigateTo = (path, data) => navigate(path)
+    const goToCondoTracking = () => navigateTo('/condo-tracking')
 
     const navLinks = [
         {
@@ -31,13 +36,6 @@ export default function Navigation({ scrollToAboutUs, scrollToServices, scrollTo
 
     const openOffCanvasNav = () => setShowOffcanvasNav(true)
     const hideOffCanvasNav = () => setShowOffcanvasNav(false)
-
-    const handleContactUsBtnClick = () => {
-        hideOffCanvasNav()
-        scrollToFooter()
-
-        return;
-    }
 
     const displayNavLinks = navLinks.map((navlink, i) => {
         const { title, clickEvt } = navlink
@@ -76,13 +74,13 @@ export default function Navigation({ scrollToAboutUs, scrollToServices, scrollTo
             </div>
             <div className="col-lg-2 d-lg-flex d-md-none d-none align-items-center justify-content-end">
                 <button
-                    onClick={handleContactUsBtnClick}
+                    onClick={goToCondoTracking}
                     style={{
                         borderRadius: '40px'
                     }}
                     className="bg-E37A16 nav-btn px-3 py-2 font-family-DmSans txt-15 txt-FFF fw-600"
                 >
-                    Contact us
+                    Condo Tracking
                 </button>
             </div>  
             <div className="d-flex d-md-flex d-lg-none align-items-center justify-content-end">
@@ -120,13 +118,13 @@ export default function Navigation({ scrollToAboutUs, scrollToServices, scrollTo
                         }
 
                         <button
-                            onClick={handleContactUsBtnClick}
+                            onClick={goToCondoTracking}
                             style={{
                                 borderRadius: '40px'
                             }}
                             className="bg-E37A16 nav-btn px-3 py-2 font-family-DmSans txt-15 txt-FFF fw-600"
                         >
-                            Contact us
+                            Condo Tracking
                         </button>                        
                     </div>
                 </div>

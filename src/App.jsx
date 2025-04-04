@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import './App.css'
-import Main from './components/main/Main'
 import { Bounce, toast, ToastContainer } from 'react-toastify'
+import { HashRouter } from 'react-router-dom'
+import AppRouter from './components/appRouter/AppRouter'
 
 function App() {
 
@@ -22,7 +23,9 @@ function App() {
       />
 
 
-      <Main />
+      <HashRouter>
+        <AppRouter />
+      </HashRouter>
     </div>
   )
 }
